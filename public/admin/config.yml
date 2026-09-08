@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+site_url: https://YOUR-SITE.netlify.app
+display_url: https://YOUR-SITE.netlify.app
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - {label: "Brand", name: "brand", widget: "string"}
+          - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro", name: "intro", widget: "text"}
+          - {label: "CTA", name: "cta", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Instagram", name: "instagram", widget: "string"}
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "content/portfolio"
+    create: true
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: [Branding, Packaging, Social]}
+      - {label: "Tagline", name: "tag", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: true}
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - {label: "Quote", name: "quote", widget: "text"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Role", name: "role", widget: "string"}
